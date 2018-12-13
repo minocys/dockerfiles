@@ -1,0 +1,13 @@
+FROM golang:1.11.2
+
+ARG app_env
+ENV APP_ENV = $app_envo
+
+RUN go get github.com/pilu/fresh
+
+CMD if [ ${APP_ENV} = production ]; \
+      then app; \
+      else fresh; \
+    fi
+
+EXPOSE 3000
